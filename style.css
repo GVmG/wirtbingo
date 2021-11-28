@@ -1,0 +1,100 @@
+body {
+	font-family: 'Outfit', sans-serif;
+	background-color: #222233;
+	color: #ffffff;
+}
+
+a {
+	text-decoration: none;
+	color: #ccccff;
+}
+
+a:hover {
+	color: #9999ff;
+}
+
+.button {
+	display: inline-block;
+	width: 250px;
+	font-size: 32px;
+	color: #ffffff;
+	background-color: #444488;
+	border-radius: 48px;
+	text-align: center;
+}
+
+.button:hover {
+	background-color: #7f7f99;
+}
+
+#slots {
+	text-align: center;
+	display: inline;
+}
+
+.slot {
+	width: 140px;
+	height: 140px;
+	border: 1px solid transparent;
+	background-color: #292944;
+}
+
+.slot:hover {
+	background-color: #444488;
+	border-color: #ffffff;
+}
+
+.checked {
+	background-color: #7f7f99 !important;
+}
+
+#buttons {
+	text-align: center;
+}
+
+#bingo {
+	position: fixed;
+	left: 10px;
+	right: 10px;
+	top: 170px;
+	text-align: center;
+	transform-origin: center top;
+}
+
+#banner {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 160px;
+	border-bottom: 1px solid #000000;
+	background-color: #222233;
+	
+	text-align: center;
+}
+
+#footer {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	font-size: 16px;
+	border-top: 1px solid #000000;
+	background-color: #222233;
+}
+
+.tooltip {
+	position: fixed;
+	pointer-events: none;
+	top: 10px;
+	left: 10px;
+	
+	background-color: #444488;
+	font-size: 12px;
+	border-radius: 6px;
+	padding: 2px;
+	opacity: 0;
+}
+.visibleTip {
+	opacity: 100%;
+}

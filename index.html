@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Wirtual Bingo - twitch.tv/wirtual</title>
+		<link rel="stylesheet" href="style.css">
+		<link rel="shortcut icon" id="fav" type="image/png" href="favicon.png"/>
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+	</head>
+	
+	<body>
+		<div id="banner"><a onclick="generateSeed()"><img src="logo.png" onmouseenter="showTooltip('Generate New Board')" onmouseleave="noTooltip()" /></a></div>
+		<div id="bingo">
+			<div id="buttons">
+				<div class="button" onclick="generateSeed()">New Board</div>
+				<div class="button" onclick="shareSeed()" onmouseenter="showTooltip('Copy Seed to Clipboard')" onmouseleave="noTooltip()" >Share Board</div>
+			</div><br>
+			
+			<table id="slots"></table>
+		</div>
+		<div id="footer"></div>
+		
+		<div class="tooltip"></div>
+		
+		<script>
+			let arguments=new URLSearchParams(window.location.search);
+			seed=arguments.get("s");
+			
+			const bingos=[
+			"Wirt talks about his fridge", "Contact Lens Solution joke", "Bad Text-to-Speech Joke", "Text-to-Speech/Donation Spam", "Wirt turns off Alerts", "Wirt's Terrible Takes (Shower with socks etc.)", 
+			"<img src=\"https://cdn.betterttv.net/emote/5f1b0186cf6d2144653d2970/1x\" /> banger song", "Wirt defends anime/weeb music", "Wirt's cooking", "Gifted sub bomb (20+)", "\"And then, X got this run.\"", "Wirt makes a map", 
+			"<img src=\"https://cdn.betterttv.net/emote/5e7cdc1d6d485d372b29e733/1x\" /> Streamer Doesn't Know", "Childhood story", "Micka on Ice", "Wirt talks about a Future Video or Project", "Believers Win", "Doubters Win", 
+			"<img src=\"https://cdn.frankerfacez.com/emoticon/418189/1\" /> OIL", "<img src=\"https://cdn.frankerfacez.com/emoticon/418189/1\" /> TREE", "<img src=\"https://cdn.frankerfacez.com/emoticon/418189/1\" /> POLE", "<img src=\"https://cdn.frankerfacez.com/emoticon/418189/1\" /> COCK", 
+			"Someone mentions the Butter Crisis", "Norway > Sweden", "Wirt speaks Norwegian", "Wirt praises Sweden", "Wirt gets Raided", "Wirt gets WR", "Maji joins VC", "Scrapie joins VC", "Marbles on Stream", "Level 5 Hype Train", 
+			"<img src=\"https://cdn.frankerfacez.com/emoticon/457124/1\" /> WICKED", "Pulls a Wirtual (Clutch)", "Pulls a Wirtual (Choke)", "En Aften Ved Svanefossen", "Insane TAS Reaction", "Wirt explains the Red Block (Engine Off)", "Wirt explains the Blue Block (Cruise Control)", "Wirt fishes for Primes", 
+			"Turtleneck", "Wirt mentions Updates", "Wirt mentions Sigma Grindset", "Wirt finds a Shortcut", "Ice in COTD", "Sus Trophies", "Someone talks about Gears", "Someone makes a Riolu joke", "Storytelling Voice", "Division 1 COTD", 
+			"Wirt says something sus", "Maji says something sus", "<img src=\"https://cdn.frankerfacez.com/emoticon/563443/1\" /> COPIUM", "Voice crack", "COTD Win", "Voice chat with Guest", "Chat complains about Channel Points", "Chat is Horny", "Text-to-Speech compliment", "PETTHEMODS", 
+			"Paid in Exposure", "Mufat joke", "Wirt argues what \"Pulling a Wirtual\" means", "Chat is full of Doctors and Experts", "Not Division 1 in COTD", "Wirt explains what Speedsliding is", "Wirt explains what Ice-Sliding is", 
+			"<img src=\"https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_43cf2536a09a4816b4aecb459b2e593d/default/dark/1.0\"><br>Wirt raids someone at the end of stream", "Wirt barely misses a WR", "Ice map", "RPG map", "Wirt makes a terrible joke", 
+			"Wirt gets roasted", "The number 69 appears", "The number 420 appears", "Wirt gets salty", "Chat asks when Wirt is gonna get a WR (D13, Bennet Foddy etc.)", "Chat backseats", "<img src=\"https://cdn.betterttv.net/emote/5f133c6d6a65270522169b73/1x\" /><br>Stressful hard map"
+			];
+			
+			const egg=[
+			"Carefully crafted by GV", "By GV, held together by duct tape and spit", "Spaghetti bolognese code by GV", "From the depths of GV's wretched mind", "Three nights of GV's sleep", "GV left no easter eggs here, go away.", 
+			"GV joined the game.", "What's a GV", "The GV knows where it is", "You cannot grasp the true form of GV's code"
+			];
+			
+			if (!seed) {
+				generateSeed();
+			}
+			
+			rnd=new Math.seedrandom(seed);
+			
+			generateBoard();
+			
+			
+			window.addEventListener("resize", resize);
+			resize();
+			
+			/////////////////////////////////////////////////////////////
+			tipUpdate=false;
+			
+			function showTooltip(text) {
+				let tip=document.querySelector(".tooltip");
+				
+				if (tip) {
+					tip.classList.add("visibleTip");
+					tip.innerHTML=text;
+					tipUpdate=true;
+				}
+			}
+			
+			function noTooltip() {
+				let tip=document.querySelector(".tooltip");
+				
+				if (tip) {
+					tip.classList.remove("visibleTip");
+				}
+				tipUpdate=false;
+			}
+			
+			document.addEventListener('mousemove', function(e){
+				if (tipUpdate) {
+					let tip=document.querySelector(".tooltip");
+					tip.style.transform="translateX("+e.pageX+"px)";
+					tip.style.transform+="translateY("+e.pageY+"px)";
+				}
+			}, false);
+			
+			/////////////////////////////////////////////////////////////
+			
+			function resize() { //god bless stackoverflow
+				let scale=(window.innerHeight-170)/900;
+				let b=document.getElementById("bingo");
+				b.style.transform="scale("+scale+")";
+				//console.log("resized to "+(scale*100)+"%");
+			}
+			
+			function generateSeed() {
+				seed=(Math.floor(Math.random()*10000000000)).toString(36);
+				location="?s="+seed; //mmmh yes gimme dat garbage javascript KEKW
+			}
+			
+			function shareSeed() {
+				navigator.clipboard.writeText(location.href);
+			}
+			
+			function slotCheck(e) {
+				e.classList.toggle("checked");
+			}
+			
+			function generateBoard() {
+				let chosen=[];
+				
+				while (chosen.length<25) {
+					let pick=bingos[Math.floor(rnd()*bingos.length)];
+					if (!chosen.includes(pick)) {
+						chosen.push(pick);
+					}
+				}
+				
+				let table=document.getElementById("slots");
+				let tr=null;
+				
+				for (let i=0; i<25; i++) {
+					if ((i % 5)==0 || !tr) {
+						tr=table.insertRow(-1);
+					}
+					
+					let c=tr.insertCell();
+					c.innerHTML=chosen[i];
+					c.classList.add("slot");
+					c.onclick=function () {slotCheck(c);};
+				}
+				
+				let f=document.getElementById("footer");
+				f.innerHTML=egg[Math.floor(rnd()*egg.length)].replace("GV", "<a href=\"https://github.com/GVmG\" target=_blank>Raechel</a>");
+				f.innerHTML+=" • Font: <a href=\"https://fonts.google.com/specimen/Outfit\" target=_blank>Outfit from Google Fonts</a> • Uses <a href=\"https://github.com/davidbau/seedrandom\" target=_blank>seedrandom.js by David Bau</a> • Current seed: <a onclick=\"shareSeed()\">"+seed+"<a>";
+			}
+		</script>
+	</body>
+</html>

@@ -23,6 +23,7 @@
 			<table id="slots"></table>
 		</div>
 		<div id="footer"></div>
+		<div id="notif"></div>
 		
 		<div class="tooltip"></div>
 		
@@ -85,6 +86,21 @@
 				tipUpdate=false;
 			}
 			
+			function showNotif(text) { //hacky css shenanigans
+				let n=document.getElementById("notif");
+				n.innerHTML=text;
+				n.style.display="block";
+				n.style.opacity="100%"; //instantly force opacity to 100% - doing so right as you set the display property will cancel the fade-in animation.
+				
+				setTimeout(function() {
+					n.style.opacity="0"; //two seconds later, start fading to 0
+				}, 2000);
+				
+				setTimeout(function() {
+					n.style.display="none"; //seven seconds later (five after it starts to fade) hide the element. this aligns with the css transition property being set to 5s. this is optional but it's good practice (i think idk)
+				}, 7000);
+			}
+			
 			document.addEventListener('mousemove', function(e){
 				if (tipUpdate) {
 					let tip=document.querySelector(".tooltip");
@@ -109,6 +125,7 @@
 			
 			function shareSeed() {
 				navigator.clipboard.writeText(location.href);
+				showNotif("Copied to clipboard! You can paste<br>the link wherever you want to share it.");
 			}
 			
 			function slotCheck(e) {

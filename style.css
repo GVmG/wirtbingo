@@ -83,6 +83,20 @@ a:hover {
 	background-color: #222233;
 }
 
+#notif {
+	position: fixed;
+	pointer-events: none;
+	right: 10px;
+	bottom: 10px;
+	background-color: #444488;
+	font-size: 20px;
+	border-radius: 6px;
+	padding: 2px;
+	
+	transition: opacity 5s;
+	display: none;
+}
+
 .tooltip {
 	position: fixed;
 	pointer-events: none;

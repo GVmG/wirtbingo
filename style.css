@@ -1,16 +1,16 @@
 body {
-	font-family: 'Outfit', sans-serif;
-	background-color: #222233;
+	font-family: 'Balsamiq Sans', cursive;
+	background-color: #1b1b1b;
 	color: #ffffff;
 }
 
 a {
 	text-decoration: none;
-	color: #ccccff;
+	color: #f1c9e2;
 }
 
 a:hover {
-	color: #9999ff;
+	color: #eb98cb;
 }
 
 .button {
@@ -18,13 +18,14 @@ a:hover {
 	width: 250px;
 	font-size: 32px;
 	color: #ffffff;
-	background-color: #444488;
+	background-color: #9d3c8d;
 	border-radius: 48px;
 	text-align: center;
+	padding-top: 2px; /*Crude fix to get rid of missalignment due to unsupported font. If you use a supported font remove this.*/
 }
 
 .button:hover {
-	background-color: #7f7f99;
+	background-color: #c969b4;
 }
 
 #slots {
@@ -36,20 +37,21 @@ a:hover {
 	width: 140px;
 	height: 140px;
 	border: 1px solid transparent;
-	background-color: #292944;
+	background-color: #2b2b2b;
 }
 
 .slot:hover {
-	background-color: #444488;
-	border-color: #ffffff;
+	background-color: #c969b4;
+	border-color: #c7a4b9;
 }
 
 .checked {
-	background-color: #7f7f99 !important;
+	background-color: #a58a9b !important;
 }
 
 #buttons {
 	text-align: center;
+	padding-top: 12px; /*Crude alignment fix, feel free to remove / replace with better code lol*/
 }
 
 #bingo {
@@ -67,8 +69,8 @@ a:hover {
 	right: 0;
 	top: 0;
 	height: 160px;
-	border-bottom: 1px solid #000000;
-	background-color: #222233;
+	border-bottom: 1px solid #f1c9e2;
+	background-color: #1b1b1b;
 	
 	text-align: center;
 }
@@ -79,8 +81,12 @@ a:hover {
 	right: 0;
 	bottom: 0;
 	font-size: 16px;
-	border-top: 1px solid #000000;
-	background-color: #222233;
+	border-top: 1px solid #f1c9e2;
+	background-color: #1b1b1b;
+	text-align: center;
+	/*More Crude padding. This is bad practice, you shouldn't use px, but I'm tired*/
+	padding-top: 5px; 
+	padding-bottom: 2px;
 }
 
 #notif {
@@ -88,7 +94,7 @@ a:hover {
 	pointer-events: none;
 	right: 10px;
 	bottom: 10px;
-	background-color: #444488;
+	background-color: #9d3c8d;
 	font-size: 20px;
 	border-radius: 6px;
 	padding: 2px;
@@ -103,7 +109,7 @@ a:hover {
 	top: 10px;
 	left: 10px;
 	
-	background-color: #444488;
+	background-color: #9d3c8d;
 	font-size: 12px;
 	border-radius: 6px;
 	padding: 2px;

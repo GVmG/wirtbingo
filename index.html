@@ -7,7 +7,7 @@
 		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet"> 
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
 		<script type="text/javascript" src="./entries.js"></script>
@@ -17,7 +17,9 @@
 	</head>
 	
 	<body>
-		<div id="banner"><img src="logo.png" /></div>
+		<div id="banner">
+			<img src="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_9761f77ef91e485ebd17456e3a11fcb7/static/light/4.0" />
+		</div>
 		<div id="bingo">
 			<div id="buttons">
 				<div class="button" onclick="generateSeed()" onmouseenter="showTooltip('Generate New Board')" onmouseleave="noTooltip()">New Board</div>
@@ -103,7 +105,7 @@
 			function generateFooter() {
 				let f=document.getElementById("footer");
 				f.innerHTML=ham[Math.floor(rnd()*ham.length)].replace("TB", "<a href=\"https://github.com/tomasitobambito\" target=_blank>tomasitobambito</a>");
-				f.innerHTML+=" • Source code <a href=\"https://github.com/tomasitobambito/majibingo\" target=_blank>on GitHub</a> • Originally made by <a href=\"https://github.com/GVmG\" target=_blank>Raechel</a> • Font: <a href=\"https://fonts.google.com/specimen/Outfit\" target=_blank>Google Fonts - Outfit</a> • Uses <a href=\"https://github.com/davidbau/seedrandom\" target=_blank>seedrandom.js</a> • Now with "+bingos.length+" entries! Submit your suggestions to tomasitobambito#2675 • Current seed: <a onclick=\"shareSeed()\">"+seed+"<a>";
+				f.innerHTML+=" • Source code <a href=\"https://github.com/tomasitobambito/majibingo\" target=_blank>on GitHub</a> • Based on <a href=\"https://github.com/GVmG/wirtbingo/tree/main\" target=_blank>Raechel's wirtbingo</a> • Font: <a href=\"https://fonts.google.com/specimen/Balsamiq+Sans\" target=_blank>Balsamiq Sans</a> • Uses <a href=\"https://github.com/davidbau/seedrandom\" target=_blank>seedrandom.js</a> • Now with "+bingos.length+" entries! Submit your suggestions to tomasitobambito#2675 on discord";
 			}
 		</script>
 	</body>

@@ -17,9 +17,7 @@
 	</head>
 	
 	<body>
-		<div id="banner">
-			<img src="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_9761f77ef91e485ebd17456e3a11fcb7/static/light/4.0" />
-		</div>
+		<div id="banner"></div>
 		<div id="bingo">
 			<div id="buttons">
 				<div class="button" onclick="generateSeed()" onmouseenter="showTooltip('Generate New Board')" onmouseleave="noTooltip()">New Board</div>
@@ -40,6 +38,14 @@
 			const ham=[
 			"Spaghetti code adapted by TB", "A few days of TB's time", "Carefully thrown together by TB", "A little bit of a mess, but that isn't TB's fault", "TB was bored",
 			"Crude adaptation quickly put together by TB"
+			];
+
+			const logos=[ // Yes this could be done automatically, but it's 2AM and I am not in the mood. Might add this later.
+				"<img src=\"logos/awww.png\" />",
+				"<img src=\"logos/blanket.png\" />",
+				"<img src=\"logos/jam.png\" />",
+				"<img src=\"logos/pog.png\" />",
+				"<img src=\"logos/sniff.png\" />"
 			];
 			
 			if (!seed) {
@@ -100,12 +106,18 @@
 				}
 				
 				generateFooter();
+				generateBanner();
 			}
 			
 			function generateFooter() {
 				let f=document.getElementById("footer");
 				f.innerHTML=ham[Math.floor(rnd()*ham.length)].replace("TB", "<a href=\"https://github.com/tomasitobambito\" target=_blank>tomasitobambito</a>");
 				f.innerHTML+=" • Source code <a href=\"https://github.com/tomasitobambito/majibingo\" target=_blank>on GitHub</a> • Based on <a href=\"https://github.com/GVmG/wirtbingo/tree/main\" target=_blank>Raechel's wirtbingo</a> • Font: <a href=\"https://fonts.google.com/specimen/Balsamiq+Sans\" target=_blank>Balsamiq Sans</a> • Uses <a href=\"https://github.com/davidbau/seedrandom\" target=_blank>seedrandom.js</a> • Now with "+bingos.length+" entries! Submit your suggestions to tomasitobambito#2675 on discord";
+			}
+
+			function generateBanner() {
+				let b=document.getElementById("banner");
+				b.innerHTML=logos[Math.floor(rnd()*logos.length)]
 			}
 		</script>
 	</body>

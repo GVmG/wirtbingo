@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Wirtual Bingo - twitch.tv/wirtual</title>
+		<title>Maji Bingo - twitch.tv/majijej</title>
 		<link rel="stylesheet" href="style.css">
 		<link rel="shortcut icon" id="fav" type="image/png" href="favicon.png"/>
 		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet"> 
 		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
 		<script type="text/javascript" src="./entries.js"></script>
@@ -17,10 +17,12 @@
 	</head>
 	
 	<body>
-		<div id="banner"><a onclick="generateSeed()"><img src="logo.png" onmouseenter="showTooltip('Generate New Board')" onmouseleave="noTooltip()" /></a></div>
+		<div id="banner">
+			<img src="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_9761f77ef91e485ebd17456e3a11fcb7/static/light/4.0" />
+		</div>
 		<div id="bingo">
 			<div id="buttons">
-				<div class="button" onclick="generateSeed()">New Board</div>
+				<div class="button" onclick="generateSeed()" onmouseenter="showTooltip('Generate New Board')" onmouseleave="noTooltip()">New Board</div>
 				<div class="button" onclick="shareSeed()" onmouseenter="showTooltip('Copy Seed to Clipboard')" onmouseleave="noTooltip()" >Share Board</div>
 			</div><br>
 			
@@ -35,9 +37,9 @@
 			let arguments=new URLSearchParams(window.location.search);
 			seed=arguments.get("s");
 			
-			const egg=[
-			"Carefully crafted by GV", "By GV, held together by duct tape and spit", "Spaghetti bolognese code by GV", "From the depths of GV's wretched mind", "Three nights of GV's sleep", "GV left no easter eggs here, go away.", 
-			"GV joined the game.", "What's a GV", "The GV knows where it is", "You cannot grasp the true form of GV's code"
+			const ham=[
+			"Spaghetti code adapted by TB", "A few days of TB's time", "Carefully thrown together by TB", "A little bit of a mess, but that isn't TB's fault", "TB was bored",
+			"Crude adaptation quickly put together by TB"
 			];
 			
 			if (!seed) {
@@ -53,11 +55,10 @@
 			
 			/////////////////////////////////////////////////////////////
 			
-			function resize() { //god bless stackoverflow
+			function resize() { //god bless stackoverflow -> Amen
 				let scale=(window.innerHeight-170)/900;
 				let b=document.getElementById("bingo");
 				b.style.transform="scale("+scale+")";
-				//console.log("resized to "+(scale*100)+"%");
 			}
 			
 			function generateSeed() {
@@ -103,8 +104,8 @@
 			
 			function generateFooter() {
 				let f=document.getElementById("footer");
-				f.innerHTML=egg[Math.floor(rnd()*egg.length)].replace("GV", "<a href=\"https://github.com/GVmG\" target=_blank>Raechel</a>");
-				f.innerHTML+=" • Source code <a href=\"https://github.com/GVmG/wirtbingo/tree/gh-pages\" target=_blank>on GitHub</a> • Font: <a href=\"https://fonts.google.com/specimen/Outfit\" target=_blank>Outfit from Google Fonts</a> • Uses <a href=\"https://github.com/davidbau/seedrandom\" target=_blank>seedrandom.js by David Bau</a> • Now with "+bingos.length+" entries! • Current seed: <a onclick=\"shareSeed()\">"+seed+"<a>";
+				f.innerHTML=ham[Math.floor(rnd()*ham.length)].replace("TB", "<a href=\"https://github.com/tomasitobambito\" target=_blank>tomasitobambito</a>");
+				f.innerHTML+=" • Source code <a href=\"https://github.com/tomasitobambito/majibingo\" target=_blank>on GitHub</a> • Based on <a href=\"https://github.com/GVmG/wirtbingo/tree/main\" target=_blank>Raechel's wirtbingo</a> • Font: <a href=\"https://fonts.google.com/specimen/Balsamiq+Sans\" target=_blank>Balsamiq Sans</a> • Uses <a href=\"https://github.com/davidbau/seedrandom\" target=_blank>seedrandom.js</a> • Now with "+bingos.length+" entries! Submit your suggestions to tomasitobambito#2675 on discord";
 			}
 		</script>
 	</body>

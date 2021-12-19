@@ -1,4 +1,4 @@
-# wirtbingo / Wirtual Bingo Cards
-A bingo card generator site for Twitch streamer [Wirtual](http://twitch.tv/wirtual).
+# majibingo / Maji Bingo Cards
+A bingo card generator site for Twitch streamer [Majijej](https://www.twitch.tv/majijej).
 
-Feel free to use my code for your own bingo sites, although I wouldn't recommend it lmao
+Forked from [wirtbingo](https://github.com/GVmG/wirtbingo) by [GVmG](https://github.com/GVmG)

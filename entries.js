@@ -41,6 +41,7 @@ const bingos=[
 "Maji snipes someone",
 "Clipable moment",
 "Maji's map has a cut",
+"Chat is full of doctors and lawyers",
 
 // Non-seasonal emotes
 "<img src=\"https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_bcd77a288fa24c90855a34965af39f68/default/light/1.0\" /> Maji Rage",
@@ -59,6 +60,7 @@ const bingos=[
 "<img src=\"https://cdn.frankerfacez.com/emoticon/418189/1\" /> TREE",
 "<img src=\"https://cdn.frankerfacez.com/emoticon/418189/1\" /> OIL",
 "<img src=\"https://cdn.frankerfacez.com/emoticon/457124/1\" /> WICKED",
+"<img src=\"https://cdn.frankerfacez.com/emoticon/332541/1\" /> Chat riots",
 "Chat is <img src=\"https://cdn.frankerfacez.com/emoticon/243789/1\" />",
 
 // Seasonal emotes

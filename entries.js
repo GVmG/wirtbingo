@@ -96,6 +96,7 @@ const bingos=[
 "Wirt fails the risky finish",
 "<img src=\"https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_5e32ca0cc3fa48618d7e044bcb2f8e29/default/dark/1.0\" /> Clippable moment",
 "<img src=\"https://cdn.betterttv.net/emote/6083732039b5010444d051e8/1x\"><br>Streamer is late",
-"Wirtual scams someone",
-"Tristan shows up"
+"Wirt scams someone",
+"Tristan shows up",
+"Wirt touches his hair"
 ];

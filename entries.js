@@ -37,7 +37,7 @@ const bingos=[
 "En Aften Ved Svanefossen",
 "Insane TAS Reaction",
 "Wirt explains the Red Block (Engine Off)",
-"Wirt explains the Blue Block (Cruise Control)",
+"Map uses the Blue Block (Cruise Control)",
 "Wirt fishes for Primes",
 "Turtleneck",
 "Wirt mentions Updates",
